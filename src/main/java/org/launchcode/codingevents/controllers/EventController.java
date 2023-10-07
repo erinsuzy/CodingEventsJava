@@ -23,7 +23,7 @@ public class EventController {
     public String displayAllEvents(Model model) {
         model.addAttribute("title", "All Events");
         model.addAttribute("events", events);
-        return "events/";
+        return "events/index";
     }
 
     @GetMapping("create")
@@ -35,7 +35,7 @@ public class EventController {
     @PostMapping("create")
     public String processCreateEventForm(@RequestParam String eventName) {
         events.add(new Event(eventName));
-        return "redirect";
+        return "redirect: ";
     }
 
 }
