@@ -15,7 +15,7 @@ import java.util.List;
  * Created by Chris Bay
  */
 @Controller
-@RequestMapping("events")
+@RequestMapping("/events")
 public class EventController {
 
     private static List<Event> events = new ArrayList<>();
@@ -26,13 +26,13 @@ public class EventController {
         return "events/index";
     }
 
-    @GetMapping("create")
+    @GetMapping("/create")
     public String displayCreateEventForm(Model model) {
         model.addAttribute("title", "Create Event");
         return "events/create";
     }
 
-    @PostMapping("create")
+    @PostMapping("/create")
     public String processCreateEventForm(@RequestParam String eventName,
                                          @RequestParam String eventDiscription) {
         events.add(new Event(eventName, eventDiscription));
