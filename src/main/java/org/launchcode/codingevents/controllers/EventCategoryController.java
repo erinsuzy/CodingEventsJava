@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/eventCategories")
+@RequestMapping("eventCategories")
 public class EventCategoryController {
 
     @Autowired
     private EventCategoryRepository eventCategoryRepository;
 
-    @GetMapping("/index")
+    @GetMapping
     public String displayAllCategories(Model model) {
         model.addAttribute("title", "All Categories");
         model.addAttribute("Categories", eventCategoryRepository.findAll());
@@ -29,7 +29,7 @@ public class EventCategoryController {
     @GetMapping("/create")
     public String renderCreateEventCategoryForm (Model model) {
         model.addAttribute("title", "Create Category");
-        model.addAttribute("eventCategory", new EventCategory());
+        model.addAttribute(new EventCategory());
         return "eventCategories/create";
     };
 
@@ -42,7 +42,7 @@ public class EventCategoryController {
 
         }
         eventCategoryRepository.save(eventCategory);
-        return "redirect:/events";
+        return "redirect:/create";
     }
 
 }
