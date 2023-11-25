@@ -23,6 +23,9 @@ public class Tag extends AbstractEntity {
 
     public Tag() {}
 
+    @ManyToMany(mappedBy = "tags")
+    private final List<Event> events = new ArrayList<>();
+
     public String getName() {
         return name;
     }
@@ -34,5 +37,10 @@ public class Tag extends AbstractEntity {
     public void setName(String name) {
         this.name = name;
     }
+
+    public List<Event> getEvents() {
+        return events;
+    }
+
 
 }
